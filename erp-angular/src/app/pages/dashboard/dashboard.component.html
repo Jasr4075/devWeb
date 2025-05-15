@@ -1,0 +1,131 @@
+<div class="dashboard-container">
+  <div class="header-container">
+    <h1>Dashboard Financeiro</h1>
+    <p class="subtitle">Visão geral do desempenho financeiro</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="col-md-6 col-lg-3">
+      <div class="stat-card" [ngStyle]="{ 'border-left-color': '#4e73df' }">
+        <div class="card-body">
+          <div class="card-title">Lucro Total Anual</div>
+          <div class="card-value">
+            {{ formatCurrency(totalLucro) }}
+          </div>
+          <div class="card-footer">
+            <div class="icon-container" [ngStyle]="{ 'background-color': '#4e73df20', 'color': '#4e73df' }">
+              <fa-icon [icon]="faMoneyBillWave" [style.fontSize.px]="20"></fa-icon>
+            </div>
+            <span class="change-text" [ngClass]="{ 'positive': 12 > 0 }">
+              +12%
+              <fa-icon *ngIf="12 > 0" [icon]="faArrowTrendUp" [style.fontSize.px]="16"></fa-icon>
+              <fa-icon *ngIf="12 <= 0" [icon]="faArrowTrendDown" [style.fontSize.px]="16"></fa-icon>
+            </span>
+          </div>
+          <div class="card-description">Total em 12 meses</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="stat-card" [ngStyle]="{ 'border-left-color': '#1cc88a' }">
+        <div class="card-body">
+          <div class="card-title">Média Mensal</div>
+          <div class="card-value">
+            {{ formatCurrency(mediaLucro) }}
+          </div>
+          <div class="card-footer">
+            <div class="icon-container" [ngStyle]="{ 'background-color': '#1cc88a20', 'color': '#1cc88a' }">
+              <fa-icon [icon]="faDollarSign" [style.fontSize.px]="20"></fa-icon>
+            </div>
+            <span class="change-text" [ngClass]="{ 'positive': 5 > 0 }">
+              +5%
+              <fa-icon *ngIf="5 > 0" [icon]="faArrowTrendUp" [style.fontSize.px]="16"></fa-icon>
+              <fa-icon *ngIf="5 <= 0" [icon]="faArrowTrendDown" [style.fontSize.px]="16"></fa-icon>
+            </span>
+          </div>
+          <div class="card-description">Lucro médio por mês</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="stat-card" [ngStyle]="{ 'border-left-color': '#36b9cc' }">
+        <div class="card-body">
+          <div class="card-title">Melhor Mês</div>
+          <div class="card-value">
+            {{ formatCurrency(melhorMes.valor) }}
+          </div>
+          <div class="card-footer">
+            <div class="icon-container" [ngStyle]="{ 'background-color': '#36b9cc20', 'color': '#36b9cc' }">
+              <fa-icon [icon]="faCalendarDays" [style.fontSize.px]="20"></fa-icon>
+            </div>
+            <span class="change-text" [ngClass]="{ 'positive': 15 > 0 }">
+              +15%
+              <fa-icon *ngIf="15 > 0" [icon]="faArrowTrendUp" [style.fontSize.px]="16"></fa-icon>
+              <fa-icon *ngIf="15 > 0" [icon]="faArrowTrendUp" [style.fontSize.px]="16"></fa-icon>
+            </span>
+          </div>
+          <div class="card-description">{{ melhorMes.mes }} com maior lucro</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="stat-card" [ngStyle]="{ 'border-left-color': '#f6c23e' }">
+        <div class="card-body">
+          <div class="card-title">Pior Mês</div>
+          <div class="card-value">
+            {{ formatCurrency(piorMes.valor) }}
+          </div>
+          <div class="card-footer">
+            <div class="icon-container" [ngStyle]="{ 'background-color': '#f6c23e20', 'color': '#f6c23e' }">
+              <fa-icon [icon]="faCalendar" [style.fontSize.px]="20"></fa-icon>
+            </div>
+            <span class="change-text" [ngClass]="{ 'negative': -8 < 0 }">
+              -8%
+              <fa-icon *ngIf="-8 > 0" [icon]="faArrowTrendUp" [style.fontSize.px]="16"></fa-icon>
+              <fa-icon *ngIf="-8 <= 0" [icon]="faArrowTrendDown" [style.fontSize.px]="16"></fa-icon>
+            </span>
+          </div>
+          <div class="card-description">{{ piorMes.mes }} com menor lucro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-card">
+    <div class="card-body">
+      <div class="card-header">
+        <div>
+          <h2>Evolução Financeira</h2>
+          <p>Acompanhe a evolução de receitas, despesas e lucros ao longo do ano</p>
+        </div>
+        <div class="button-group">
+          <button 
+            class="toggle-button" 
+            [ngClass]="{ 'active': chartType === 'barra' }"
+            (click)="toggleChartType('barra')"
+          >
+            <fa-icon [icon]="faChartBar" class="me-2"></fa-icon>
+
+            Barras
+          </button>
+          <button 
+            class="toggle-button" 
+            [ngClass]="{ 'active': chartType === 'linha' }"
+            (click)="toggleChartType('linha')"
+          >
+            <fa-icon [icon]="faChartLine" class="me-2"></fa-icon>
+            Linhas
+          </button>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

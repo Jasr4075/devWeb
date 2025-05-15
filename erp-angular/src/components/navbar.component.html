@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">ERP Cloud</a>
+      
+      <div class="navbar-items">
+        <a class="nav-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <button class="nav-button primary" (click)="navigateTo('/login')">Entrar</button>
+        <button class="nav-button outline" (click)="navigateTo('/register')">Cadastrar</button>
+      </div>
+    </div>
+  </nav>
