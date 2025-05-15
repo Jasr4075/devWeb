@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Container, Card } from "react-bootstrap";
 import { LoginWrapper, StyledCard, StyledForm } from './styledComponents';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -15,10 +16,11 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulación de carga
+
     setTimeout(() => {
       console.log("Credenciales enviadas:", credentials);
       setIsLoading(false);
+      navigate("/dashboard");
     }, 1500);
   };
 
@@ -43,7 +45,7 @@ const Login = () => {
                   autoComplete="off"
                 />
               </Form.Group>
-              
+
               <Form.Group className="mb-3">
                 <Form.Label>Senha</Form.Label>
                 <Form.Control
@@ -55,7 +57,7 @@ const Login = () => {
                   required
                 />
               </Form.Group>
-              
+
               <button
                 className="btn btn-primary w-100 mb-3"
                 type="submit"
@@ -63,7 +65,7 @@ const Login = () => {
               >
                 {isLoading ? "Carregando..." : "Login"}
               </button>
-              
+
               <div className="text-center">
                 <Link to="/register">
                   Não tem uma conta? Cadastre-se aqui

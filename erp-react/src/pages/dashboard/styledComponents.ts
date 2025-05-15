@@ -7,7 +7,6 @@ const fadeIn = keyframes`
   to { opacity: 1; }
 `;
 
-// Styled Components mejorados
 export const DashboardContainer = styled(Container)`
   padding: 2rem 0;
   font-family: 'Inter', sans-serif;

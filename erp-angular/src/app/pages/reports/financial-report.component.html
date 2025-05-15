@@ -1,0 +1,84 @@
+<div class="report-container">
+    <div class="report-header">
+      <h1>Relatório Financeiro</h1>
+      <p>Relatório Anual de Lucros - Visão detalhada dos resultados financeiros da empresa</p>
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="total-profit-card">
+          <div class="card-body">
+            <h3 class="card-title">Lucro Total Anual</h3>
+            <h2 class="profit-value">{{ formatCurrency(totalProfit) }}</h2>
+            <div class="d-flex align-items-center">
+              <span class="status-badge">
+                ✔️ Aprovado
+              </span>
+              <span class="ms-3 text-muted">Jan - Dez 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="summary-card">
+          <div class="card-body">
+            <h3 class="card-title">Relatório Financeiro Detalhado</h3>
+            <div class="table-responsive">
+            <!-- <pre>{{ monthlyData | json }}</pre> -->
+              <table class="report-table">
+                <thead>
+                  <tr>
+                    <th>Mês</th>
+                    <th>Receitas</th>
+                    <th>Despesas</th>
+                    <th>Lucro</th>
+                    <th>Margem</th>
+                    <th>Tendência</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of monthlyData; let i = index">
+                    <td>{{ data.month }}</td>
+                    <td>{{ formatCurrency(data.revenue) }}</td>
+                    <td>{{ formatCurrency(data.expenses) }}</td>
+                    <td class="profit-positive">{{ formatCurrency(data.profit) }}</td>
+                    <td>{{ data.margin.toFixed(2) }}%</td>
+                    <td>
+                      <span *ngIf="getTrend(i) === 'up'" style="color: #1cc88a;">▲</span>
+                      <span *ngIf="getTrend(i) === 'down'" style="color: #e74a3b;">▼</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="summary-section">
+          <h3>Resumo Anual</h3>
+          <p>
+            Este relatório apresenta os resultados financeiros da empresa durante o ano de 2023,
+            destacando os lucros obtidos em cada mês e a tendência geral da operação.
+          </p>
+          <ul>
+            <li>O lucro total anual foi de {{ formatCurrency(totalProfit) }}</li>
+            <li>Observamos um crescimento consistente nos lucros ao longo do ano</li>
+            <li>O último trimestre apresentou os melhores resultados</li>
+            <li>As despesas foram mantidas sob controle, mesmo com o aumento das receitas</li>
+            <li>
+              Recomendações: Continuar com a estratégia atual de gestão financeira, focando na
+              expansão das receitas enquanto mantém o controle efetivo das despesas.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

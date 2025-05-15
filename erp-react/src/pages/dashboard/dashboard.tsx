@@ -47,7 +47,6 @@ import {
   Line 
 } from 'react-chartjs-2'; 
 
-// Registrar componentes de Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -60,7 +59,6 @@ ChartJS.register(
   Filler
 );
 
-// Tipos para los datos
 type MesData = {
   mes: string;
   valor: number;
@@ -75,7 +73,6 @@ type StatCardProps = {
   color?: string;
 };
 
-// Datos para los gráficos
 const chartData = {
   labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
   datasets: [
@@ -109,7 +106,6 @@ const chartData = {
   ],
 };
 
-// Opciones para los gráficos
 const chartOptions = {
   responsive: true,
   plugins: {
@@ -180,7 +176,6 @@ const chartOptions = {
   }
 };
 
-// Componente StatCard mejorado
 const StatCard: React.FC<StatCardProps> = ({ title, value, description, icon, change, color = '#4e73df' }) => {
   return (
     <StyledCard $color={color}>
@@ -204,11 +199,9 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, description, icon, ch
   );
 };
 
-// Componente principal del Dashboard
 const Dashboard: React.FC = () => {
   const [chartType, setChartType] = useState<'barra' | 'linha'>('barra');
 
-  // Datos mock
   const totalLucro = 125000;
   const mediaLucro = 10416.67;
   const melhorMes: MesData = { mes: 'Novembro', valor: 18500 };
