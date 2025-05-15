@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Container, Card } from "react-bootstrap";
-import { LoginWrapper, StyledCard, StyledForm } from './styledComponents';
+import { LoginWrapper, StyledCard, StyledForm } from './styles';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });

@@ -41,7 +41,7 @@ import {
   MainCard, 
   ChartContainer, 
   StyledToggleButton 
-} from './styledComponents';
+} from './styles';
 import { 
   Bar, 
   Line 

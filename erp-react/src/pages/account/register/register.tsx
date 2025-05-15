@@ -1,6 +1,6 @@
 import { Container, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import { RegisterWrapper, StyledCard } from "./styledComponents";
+import { RegisterWrapper, StyledCard } from "./styles";
 
 const Register = () => {
   return (
